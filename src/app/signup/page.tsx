@@ -1,21 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, Mail, Lock, Smartphone, User, MapPin, Building, Globe, CheckCircle, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
-import { useSearchParams } from "next/navigation";
 
 export default function SignUpPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState(0);
+  const [callbackUrl, setCallbackUrl] = useState("/dashboard");
 
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    setCallbackUrl(searchParams.get("callbackUrl") || "/dashboard");
+  }, []);
 
   const [formData, setFormData] = useState({
     fullName: "",

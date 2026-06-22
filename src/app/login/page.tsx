@@ -1,20 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Eye, EyeOff, Mail, Lock, Smartphone, ShieldCheck, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
-import { useSearchParams } from "next/navigation";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [formData, setFormData] = useState({ identifier: "", password: "" });
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
+  const [callbackUrl, setCallbackUrl] = useState("/dashboard");
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    setCallbackUrl(searchParams.get("callbackUrl") || "/dashboard");
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

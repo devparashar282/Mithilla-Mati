@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --color-maroon: #8B1E3F;
+  --color-mithila-red: #C62828;
+  --color-mustard: #D4A017;
+  --color-ivory: #FFF8E7;
+  --color-dark-text: #2D2D2D;
+  --color-natural: #5A7D4D;
+  --color-terracotta: #E07A5F;
+  --color-indigo: #1D3557;
+  --color-haldi: #F4A261;
+  --color-earth: #A67C52;
+  
+  --font-playfair: var(--font-playfair), serif;
+  --font-lora: var(--font-lora), serif;
+  --font-sans: var(--font-inter), sans-serif;
+  --font-montserrat: var(--font-montserrat), sans-serif;
+}
+
+.madhubani-border {
+  border: 4px double var(--color-maroon);
+  box-shadow: 4px 4px 0px 0px var(--color-mustard);
+}
+
+.madhubani-card {
+  background-color: var(--color-ivory);
+  border: 2px solid var(--color-maroon);
+  border-radius: 4px;
+  box-shadow: 6px 6px 0px 0px var(--color-terracotta);
+  transition: all 0.3s ease;
+}
+
+.madhubani-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px 0px var(--color-maroon);
+}
+
+@utility glass {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+@utility glass-dark {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body {
+  background-color: var(--color-ivory);
+  color: var(--color-dark-text);
+  overflow-x: hidden;
+}
